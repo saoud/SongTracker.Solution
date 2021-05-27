@@ -17,19 +17,24 @@ namespace SongTracker.Controllers
 
     public ActionResult Index()
     {
-      List<Song> model = _db.Songs.ToList();
-      return View(model);
+      return View(_db.Songs.ToList());
     }
 
     public ActionResult Create()
     {
-      return View():
+      ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
+      return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Song song)
+    public ActionResult Create(Song song, int InstrumentId)
     {
       _db.Songs.Add(song);
+      _db.SaveChanges();
+      if (InstrumentId != 0)
+      {
+        _db.InstrumentSong.Add(new InstrumentSong() { InstrumentId = InstrumentId, SongId = song.SongId });
+      }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
@@ -39,4 +44,58 @@ namespace SongTracker.Controllers
       var thisSong = _db.Songs
           .Include(song => song.JoinEntities)
           .ThenInclude(join => join.Instrument)
-          .FirstOrDefault(
+          .FirstOrDefault(song => song.SongId == id);
+      return View(thisSong);
+    }
+
+    public ActionResult Edit(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
+      return View(thisSong);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Song song, int InstrumentId)
+    {
+      if(InstrumentId != 0)
+      {
+        _db.InstrumentSong.Add(new InstrumentSong() { InstrumentId = InstrumentId, SongId = song.SongId });
+      }
+      _db.Entry(song).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult AddInstrument(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentsId", "Name");
+      return View(thisSong);
+    }
+
+    public ActionResult Delete(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      return View(thisSong);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      _db.Songs.Remove(thisSong);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteInstrument(int joinId)
+    {
+      var joinEntry = _db.InstrumentSong.FirstOrDefault(entry => entry.InstrumentSongId == joinId);
+      _db.InstrumentSong.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+  }
+}
