@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ReplaceWithNameSpace.Models; //Replace with namespace
+using SongTracker.Models; //Replace with namespace
 
-namespace ReplaceWithProjectName
+namespace SongTracker
 {
   public class Startup
   {
@@ -25,7 +25,7 @@ namespace ReplaceWithProjectName
       services.AddMvc();
 
       services.AddEntityFrameworkMySql()
-        .AddDbContext<REPLACEWITHProjectNameContext>(options => options
+        .AddDbContext<SongTrackerContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
     }
 
