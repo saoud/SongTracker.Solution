@@ -5,7 +5,7 @@
 </div>
 
 <h3 align="center">Description of application, date-2021</h3>
-<h4 align="center"> By HR Williams</h4>
+<h4 align="center"> By HR Williams, Theron Packus & Juan Hasbun</h4>
 
 ## Description
 
@@ -63,12 +63,12 @@ MySQL is a type of database software used to create, edit, query, and manage SQL
 
 ##### Compiling
 
-- Navigate to the TODO folder in the command line
+- Navigate to the SongTracker folder in the command line
 - Use the command `dotnet build` to compile
 
 ##### Installing Packages
 
-- Navigate to the TODO folder in the command line
+- Navigate to the SongTracker folder in the command line
 - Use the command `dotnet restore`
 
 <details>
@@ -85,17 +85,17 @@ Create a connection string to connect the database to the web application
 ```
 {
   "ConnectionStrings": {
-      "DefaultConnection": "Server=localhost;Port=3306;database=top_restaurants;uid=root;pwd=password;"
+      "DefaultConnection": "Server=localhost;Port=3306;database=song_tracker;uid=root;pwd=password;"
   }
 }
 ```
 
-- TODO CHANGE DBNAME
+- SongTracker CHANGE DBNAME
 - Put in your MySQL password in `pwd=YourPassword`. Change the server, port, and uid if necessary.
 
 ### Import Database Using Entity Framework Core
 
-1. Navigate to TODO directory in terminal
+1. Navigate to SongTracker directory in terminal
 2. Use the command `dotnet ef database update` to generate the database through Entity Framework Core
 
 ### Update Database Using Entity Framework Core
@@ -118,13 +118,13 @@ Create a connection string to connect the database to the web application
 
 ##### View In Browser
 
-- To view in browser, navigate to TODO folder in the command line
+- To view in browser, navigate to SongTracker folder in the command line
 - Use the command `dotnet run` to execute the compiled code and start a localhost
 - In browser navigate to http://localhost:5000
 
 ## Known Bugs
 
-TODO
+SongTracker
 
 ## Support and Contact Details
 
@@ -149,4 +149,4 @@ If any errors or bugs occur with installation, delete both bin and obj folders a
 
 This software is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
-Copyright (c) 2021 HR Williams
+Copyright (c) 2021 HR Williams, Theron Packus, Juan Hasbun
