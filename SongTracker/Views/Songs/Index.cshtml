@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SongTracker.Models;
+@model List<SongTracker.Models.Song>;
+<h1>Songs</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No songs have been added yet!</h3>
+} 
+
+@foreach (Song song in Model)
+{
+  <li>@Html.ActionLink($"{song.Name}", "Details", new { id = song.SongId })</li>
+}
+
+<p>@Html.ActionLink("Add new song", "Create")</p>

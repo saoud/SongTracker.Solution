@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Replace.Controllers
+namespace SongTracker.Controllers
 {
   public class HomeController : Controller
   {

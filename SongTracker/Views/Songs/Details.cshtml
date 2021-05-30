@@ -1,0 +1,40 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SongTracker.Models.Song
+
+<h2>Song Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+<h3>@Html.DisplayNameFor(model => model.Artist): @Html.DisplayFor(model => model.Artist)<h3>
+<h3>@Html.DisplayNameFor(model => model.Genre): @Html.DisplayFor(model => model.Genre)<h3>
+<h3>@Html.DisplayNameFor(model => model.Chords): @Html.DisplayFor(model => model.Chords)<h3>
+
+@* @if(@Model.JoinEntities.Count == 0)
+{
+  <p>This song does not belong to any current instruments</p>
+}
+else
+{
+  <h4>Instruments You know this song on:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Instrument.Name</li>
+    @using (Html.BeginForm("DeleteInstrument", "Songs"))
+    {
+      @Html.Hidden("joinId", @join.InstrumentSongId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Song", "Edit", new { id = Model.SongId })</p>
+<p>@Html.ActionLink("Delete Song", "Delete", new { id = Model.SongId })</p>
+<p>@Html.ActionLink("Add a Instrument", "AddInstrument", new { id = Model.SongId })</p>
+  <ul>
+  
+  </ul>
+<p>@Html.ActionLink("Back to list", "Index")</p> *@
