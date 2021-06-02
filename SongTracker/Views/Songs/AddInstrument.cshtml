@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SongTracker.Models.Song
+
+<h2>Add an intstrument</h2>
+
+<h4>Add an instrument to this song: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.SongId)
+
+  @Html.Label("Select instrument")
+  @Html.DropDownList("InstrumentId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

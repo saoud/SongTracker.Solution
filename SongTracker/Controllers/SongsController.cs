@@ -67,12 +67,23 @@ namespace SongTracker.Controllers
       return RedirectToAction("Index");
     }
 
-    // public ActionResult AddInstrument(int id)
-    // {
-    //   var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
-    //   ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
-    //   return View(thisSong);
-    // }
+    public ActionResult AddInstrument(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
+      return View(thisSong);
+    }
+
+    [HttpPost]
+    public ActionResult AddInstrument(Song song, int InstrumentId)
+    {
+      if (InstrumentId != 0)
+      {
+      _db.InstrumentSong.Add(new InstrumentSong() { InstrumentId = InstrumentId, SongId = song.SongId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
     public ActionResult Delete(int id)
     {
