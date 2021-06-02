@@ -20,52 +20,52 @@ namespace SongTracker.Controllers
       return View(_db.Songs.ToList());
     }
 
-    // public ActionResult Create()
-    // {
-    //   ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
-    //   return View();
-    // }
+    public ActionResult Create()
+    {
+      ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
+      return View();
+    }
 
-    // [HttpPost]
-    // public ActionResult Create(Song song, int InstrumentId)
-    // {
-    //   _db.Songs.Add(song);
-    //   _db.SaveChanges();
-    //   if (InstrumentId != 0)
-    //   {
-    //     _db.InstrumentSong.Add(new InstrumentSong() { InstrumentId = InstrumentId, SongId = song.SongId });
-    //   }
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult Create(Song song, int InstrumentId)
+    {
+      _db.Songs.Add(song);
+      _db.SaveChanges();
+      if (InstrumentId != 0)
+      {
+        _db.InstrumentSong.Add(new InstrumentSong() { InstrumentId = InstrumentId, SongId = song.SongId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-    // public ActionResult Details(int id)
-    // {
-    //   var thisSong = _db.Songs
-    //       .Include(song => song.JoinEntities)
-    //       .ThenInclude(join => join.Instrument)
-    //       .FirstOrDefault(song => song.SongId == id);
-    //   return View(thisSong);
-    // }
+    public ActionResult Details(int id)
+    {
+      var thisSong = _db.Songs
+          .Include(song => song.JoinEntities)
+          .ThenInclude(join => join.Instrument)
+          .FirstOrDefault(song => song.SongId == id);
+      return View(thisSong);
+    }
 
-    // public ActionResult Edit(int id)
-    // {
-    //   var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
-    //   ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
-    //   return View(thisSong);
-    // }
+    public ActionResult Edit(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
+      return View(thisSong);
+    }
 
-    // [HttpPost]
-    // public ActionResult Edit(Song song, int InstrumentId)
-    // {
-    //   if(InstrumentId != 0)
-    //   {
-    //     _db.InstrumentSong.Add(new InstrumentSong() { InstrumentId = InstrumentId, SongId = song.SongId });
-    //   }
-    //   _db.Entry(song).State = EntityState.Modified;
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult Edit(Song song, int InstrumentId)
+    {
+      if(InstrumentId != 0)
+      {
+        _db.InstrumentSong.Add(new InstrumentSong() { InstrumentId = InstrumentId, SongId = song.SongId });
+      }
+      _db.Entry(song).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
     // public ActionResult AddInstrument(int id)
     // {
