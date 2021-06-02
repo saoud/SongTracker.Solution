@@ -70,24 +70,24 @@ namespace SongTracker.Controllers
     // public ActionResult AddInstrument(int id)
     // {
     //   var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
-    //   ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentsId", "Name");
+    //   ViewBag.InstrumentId = new SelectList(_db.Instruments, "InstrumentId", "Name");
     //   return View(thisSong);
     // }
 
-    // public ActionResult Delete(int id)
-    // {
-    //   var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
-    //   return View(thisSong);
-    // }
+    public ActionResult Delete(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      return View(thisSong);
+    }
 
-    // [HttpPost, ActionName("Delete")]
-    // public ActionResult DeleteConfirmed(int id)
-    // {
-    //   var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
-    //   _db.Songs.Remove(thisSong);
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+      _db.Songs.Remove(thisSong);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
     // [HttpPost]
     // public ActionResult DeleteInstrument(int joinId)
