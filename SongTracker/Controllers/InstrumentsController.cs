@@ -31,42 +31,41 @@ namespace SongTracker.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult Details(int id)
+    {
+    var thisInstrument = _db.Instruments
+        .Include(instrument => instrument.JoinEntities)
+        .ThenInclude(join => join.Song)
+        .FirstOrDefault(instrument => instrument.InstrumentId == id);
+    return View(thisInstrument);
+    }
+    public ActionResult Edit(int id)
+    {
+      var thisInstrument = _db.Instruments.FirstOrDefault(instrument => instrument.InstrumentId == id);
+      return View(thisInstrument);
+    }
 
-//     public ActionResult Details(int id)
-//     {
-//     var thisInstrument = _db.Instruments
-//         .Include(instrument => instrument.JoinEntities)
-//         .ThenInclude(join => join.Song)
-//         .FirstOrDefault(Instrument => instrument.InstrumentId == id);
-//     return View(thisInstrument);
-//     }
-//     public ActionResult Edit(int id)
-//     {
-//       var thisInstrument = _db.Instruments.FirstOrDefault(instrument => instrument.InstrumentId == id);
-//       return View(thisInstrument);
-//     }
+    [HttpPost]
+    public ActionResult Edit(Instrument instrument)
+    {
+      _db.Entry(instrument).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-//     [HttpPost]
-//     public ActionResult Edit(Instrument instrument)
-//     {
-//       _db.Entry(instrument).State = EntityState.Modified;
-//       _db.SaveChanges();
-//       return RedirectToAction("Index");
-//     }
+    public ActionResult Delete(int id)
+    {
+      var thisInstrument = _db.Instruments.FirstOrDefault(instrument => instrument.InstrumentId == id);
+      return View(thisInstrument);
+    }
 
-//     public ActionResult Delete(int id)
-//     {
-//       var thisInstrument = _db.Instruments.FirstOrDefault(instrument => instrument.InstrumentId == id);
-//       return View(thisInstrument);
-//     }
-
-//     [HttpPost, ActionName("Delete")]
-//     public ActionResult DeleteConfirmed(int id)
-//     {
-//       var thisInstrument = _db.Instruments.FirstOrDefault(instrument => instrument.InstrumentId == id);
-//       _db.Instruments.Remove(thisInstrument);
-//       _db.SaveChanges();
-//       return RedirectToAction("Index");
-//     }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisInstrument = _db.Instruments.FirstOrDefault(instrument => instrument.InstrumentId == id);
+      _db.Instruments.Remove(thisInstrument);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

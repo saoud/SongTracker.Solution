@@ -99,14 +99,13 @@ namespace SongTracker.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
-    // [HttpPost]
-    // public ActionResult DeleteInstrument(int joinId)
-    // {
-    //   var joinEntry = _db.InstrumentSong.FirstOrDefault(entry => entry.InstrumentSongId == joinId);
-    //   _db.InstrumentSong.Remove(joinEntry);
-    //   _db.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    [HttpPost]
+    public ActionResult DeleteInstrument(int joinId)
+    {
+      var joinEntry = _db.InstrumentSong.FirstOrDefault(entry => entry.InstrumentSongId == joinId);
+      _db.InstrumentSong.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
