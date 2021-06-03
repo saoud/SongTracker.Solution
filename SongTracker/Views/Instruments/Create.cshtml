@@ -1,0 +1,15 @@
+
+@{
+  Layout = "_Layout";
+}
+
+@model SongTracker.Models.Instrument
+
+<h4>Add a new instrument</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  <input type="submit" value="Add new instrument" />
+}
+<p>@Html.ActionLink("Show all instruments", "Index")</p>

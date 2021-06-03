@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SongTracker.Models.Instrument;
+
+<h2>Instrument Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>You haven't added any songs for this instrument:/</p>
+}
+else
+{
+  <h4>Songs you know on this instrument:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Song.Name</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to instruments", "Index")</p>
+<p>@Html.ActionLink("Edit Instrument", "Edit", new { id = Model.InstrumentId })</p>
+<p>@Html.ActionLink("Delete Instrument", "Delete", new { id = Model.InstrumentId })</p>

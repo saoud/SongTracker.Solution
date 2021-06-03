@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SongTracker.Models.Song
+
+<h2>Edit</h2>
+
+<h4>Edit this song: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.SongId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Artist)
+    @Html.EditorFor(model => model.Artist)
+
+    @Html.LabelFor(model => model.Genre)
+    @Html.EditorFor(model => model.Genre)
+
+    @Html.LabelFor(model => model.Chords)
+    @Html.EditorFor(model => model.Chords)
+
+    @Html.Label("Select instrument")
+    @Html.DropDownList("InstrumentId")
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

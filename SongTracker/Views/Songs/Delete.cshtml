@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SongTracker.Models.Song
+
+<h2>Are you sure you would like to delete this song? There isn't really any reason too...</h2>
+
+@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+@Html.ActionLink("Back to List", "Index")

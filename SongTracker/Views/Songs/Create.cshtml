@@ -1,4 +1,4 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
@@ -20,9 +20,9 @@
   @Html.LabelFor(model => model.Chords, "Chords:")
   @Html.TextBoxFor(model => model.Chords)
   <hr />
-  @Html.Label("Select instrument")
-  @Html.DropDownList("InstrumentId")
+  <!-- @Html.Label("Select instrument")
+  @Html.DropDownList("InstrumentId") -->
 
-  <input type="submit" value="Add new item" class="btn btn-default" />
+  <input type="submit" value="Add new song" class="btn btn-default" />
 }
-<p>@Html.ActionLink("Show all songs", "Index")</p> *@
+<p>@Html.ActionLink("Show all songs", "Index")</p>
