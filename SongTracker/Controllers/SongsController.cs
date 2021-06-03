@@ -17,6 +17,7 @@ namespace SongTracker.Controllers
 
     public ActionResult Index()
     {
+      
       return View(_db.Songs.ToList());
     }
 

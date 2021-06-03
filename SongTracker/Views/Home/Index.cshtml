@@ -2,6 +2,42 @@
   Layout = "_Layout";
 }
 
+@model List<SongTracker.Models.Instrument>;
+
 <h1>Welcome to the Song Tracker!</h1>
-<p>@Html.ActionLink("See all songs", "Index", "Songs")</p> 
-<p>@Html.ActionLink("See all instruments", "Index", "Instruments")</p>
+
+@using SongTracker.Models;
+
+<h1>Instruments</h1> 
+
+@if (@Model.Count == 0)
+{
+  <h3>No instruments have been added yet!</h3>
+}
+
+<ul>
+  @foreach (Instrument instrument in Model)
+  {
+    <li>@Html.ActionLink($"{instrument.Name}", "Details", new { id = instrument.InstrumentId })</li>
+  }
+</ul>
+
+<h1>Songs</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No songs have been added yet!</h3>
+} 
+
+@foreach (Song song in ViewBag.Songs)
+{
+  <li>@Html.ActionLink($"{song.Name}", "Details", new { id = song.SongId })</li>
+}
+
+
+<p>@Html.ActionLink("Add new instrument", "Create")</p>
+<!-- <p>@Html.ActionLink("Home", "Index", "Home")</p> -->
+
+
+<!-- <p>@Html.ActionLink("See all songs", "Index", "Songs")</p> 
+<p>@Html.ActionLink("See all instruments", "Index", "Instruments")</p> -->
