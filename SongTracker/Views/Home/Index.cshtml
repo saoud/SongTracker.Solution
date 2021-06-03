@@ -18,7 +18,7 @@
 <ul>
   @foreach (Instrument instrument in Model)
   {
-    <li>@Html.ActionLink($"{instrument.Name}", "Details", new { id = instrument.InstrumentId })</li>
+    <li>@Html.ActionLink($"{instrument.Name}", "Details","Instruments", new { id = instrument.InstrumentId })</li>
   }
 </ul>
 
@@ -31,7 +31,7 @@
 
 @foreach (Song song in ViewBag.Songs)
 {
-  <li>@Html.ActionLink($"{song.Name}", "Details", new { id = song.SongId })</li>
+  <li>@Html.ActionLink($"{song.Name}", "Details", "Songs", new { id = song.SongId })</li>
 }
 
 
