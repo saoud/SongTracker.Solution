@@ -19,18 +19,18 @@ namespace SongTracker.Controllers
       return View(model);
     }
 
-//     public ActionResult Create()
-//     {
-//       return View();
-//     }
+    public ActionResult Create()
+    {
+      return View();
+    }
 
-//     [HttpPost]
-//     public ActionResult Create(Instrument instrument)
-//     {
-//       _db.Instruments.Add(instrument);
-//       _db.SaveChanges();
-//       return RedirectToAction("Index");
-//     }
+    [HttpPost]
+    public ActionResult Create(Instrument instrument)
+    {
+      _db.Instruments.Add(instrument);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
 //     public ActionResult Details(int id)
 //     {

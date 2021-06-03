@@ -14,6 +14,8 @@ namespace SongTracker.Models
         public string Artist { get; set; }
         public string Genre { get; set; }//Replace with field name
         public string Chords { get; set; }
+        public string Tuning { get; set; }
+        public string AdditionalInfo { get; set; }
         public virtual ICollection<InstrumentSong> JoinEntities { get; set; }
     }
 }

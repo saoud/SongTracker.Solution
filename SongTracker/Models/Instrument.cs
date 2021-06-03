@@ -12,6 +12,7 @@ namespace SongTracker.Models
     public int InstrumentId { get; set; }
     public string Name { get; set; }
     public string Type { get; set; }
+    public string AdditionalInfo { get; set; }
     public virtual ICollection<InstrumentSong> JoinEntities { get; set; }
   }
 }
